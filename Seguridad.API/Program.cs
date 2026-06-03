@@ -30,6 +30,8 @@ namespace Seguridad.API
             builder.Services.AddScoped<IIniciarSesionMapeador, IniciarSesionMapeador>();
             builder.Services.AddScoped<IIniciarSesionCasoDeUso, IniciarSesionCasoDeUso>();
 
+            // Forzar que todas las URLs generadas y expuestas en Swagger sean en minúsculas
+            builder.Services.AddRouting(options => options.LowercaseUrls = true);
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
