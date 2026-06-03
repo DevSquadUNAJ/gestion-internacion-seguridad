@@ -5,6 +5,6 @@ namespace Seguridad.Aplicacion.Interfaces.IConsultas
 {
     public interface IObtenerUsuarioPorUsernameConsulta
     {
-        Task<Usuario> EjecutarAsync(string username);
+        Task<Usuario?> EjecutarAsync(string username);
     }
 }
