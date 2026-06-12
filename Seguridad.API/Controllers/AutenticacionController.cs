@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Seguridad.Aplicacion.DTOs.Respuestas;
 using Seguridad.Aplicacion.DTOs.Solicitudes;
 using Seguridad.Aplicacion.Interfaces.ICasosDeUso;
+using System.Threading.Tasks;
 
 namespace Seguridad.API.Controllers
 {
@@ -17,6 +19,9 @@ namespace Seguridad.API.Controllers
         }
 
         [HttpPost("iniciar-sesion")]
+        [ProducesResponseType(typeof(IniciarSesionRespuesta), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorApiRespuesta), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(ErrorApiRespuesta), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> IniciarSesion([FromBody] IniciarSesionSolicitud solicitud)
         {
             var respuesta = await _iniciarSesionCasoDeUso.EjecutarAsync(solicitud);

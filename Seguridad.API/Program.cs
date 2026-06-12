@@ -44,6 +44,8 @@ namespace Seguridad.API
                 app.UseSwaggerUI();
             }
 
+            app.UseMiddleware<Middlewares.ManejadorGlobalExcepcionesMiddleware>();
+
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
