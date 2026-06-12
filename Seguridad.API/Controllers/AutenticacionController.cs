@@ -20,6 +20,7 @@ namespace Seguridad.API.Controllers
 
         [HttpPost("iniciar-sesion")]
         [ProducesResponseType(typeof(IniciarSesionRespuesta), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorApiRespuesta), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(ErrorApiRespuesta), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> IniciarSesion([FromBody] IniciarSesionSolicitud solicitud)
