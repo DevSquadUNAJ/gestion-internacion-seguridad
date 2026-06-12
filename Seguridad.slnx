@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Elementos de la solucion/">
+    <File Path="docker-compose.yml" />
+  </Folder>
   <Project Path="Seguridad.API/Seguridad.API.csproj" />
   <Project Path="Seguridad.Aplicacion/Seguridad.Aplicacion.csproj" />
   <Project Path="Seguridad.Dominio/Seguridad.Dominio.csproj" />
