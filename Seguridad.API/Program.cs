@@ -33,6 +33,8 @@ namespace Seguridad.API
             builder.Services.AddScoped<IIniciarSesionMapeador, IniciarSesionMapeador>();
             builder.Services.AddScoped<IIniciarSesionCasoDeUso, IniciarSesionCasoDeUso>();
 
+            builder.Services.AddScoped<IObtenerUsuarioActualCasoDeUso, ObtenerUsuarioActualCasoDeUso>();
+
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opciones =>
                 {
@@ -61,7 +63,7 @@ namespace Seguridad.API
                     Scheme = "Bearer",
                     BearerFormat = "JWT",
                     In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-                    Description = "Ingresa el token JWT en este formato: Bearer {tu_token_aqui}"
+                    Description = "Pega tu token JWT directamente aquí. (Nota: NO escribas la palabra 'Bearer', Swagger lo agregará por ti automáticamente)."
                 });
 
                 c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
