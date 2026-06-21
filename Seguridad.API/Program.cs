@@ -82,6 +82,19 @@ namespace Seguridad.API
                 });
             });
 
+            // ==========================================
+            // SEGURIDAD: CORS (Cross-Origin Resource Sharing)
+            // ==========================================
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -93,7 +106,7 @@ namespace Seguridad.API
             app.UseMiddleware<Middlewares.ManejadorGlobalExcepcionesMiddleware>();
 
             app.UseHttpsRedirection();
-
+            app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
 
